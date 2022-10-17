@@ -1,0 +1,31 @@
+<?php
+//ESTA ES UNA FUNCION PARA mysqli
+ function query($sql){
+  // estas estan dentro de conf.phpinc
+	global $db_user, $db_pass, $db_name,$dblink;
+   if (!$dblink->ping()) {
+       $dblink->close();
+       $dblink = new mysqli('localhost', $db_user, $db_pass, $db_name);
+       if ($dblink->connect_error) {
+        die('Error al conectar a la Base de Datos (' . $dblink->connect_errno . ') '
+              . $dblink->connect_error);
+       }
+     }
+	$resultado= $dblink->query($sql);
+	return $resultado;
+	$resultado->close();
+}
+
+function Tiempo(){
+  date_default_timezone_set('America/La_Paz');
+$now = new DateTime();
+$f_creacion = new DateTime('2022-04-30');
+
+
+$interval = $f_creacion->diff($now);
+echo "Han pasado: ";
+echo $interval->days . ' días desde que subimos la primera versión' . PHP_EOL;
+}
+
+
+?>
