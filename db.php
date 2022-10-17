@@ -24,6 +24,12 @@ $emisor=$_POST['emisor'];
 $remitente=$_POST['remitente'];
 $responsable=$_POST['responsable'];
 
+$sql="SELECT id_user FROM user_upb WHERE correo='{$emisor}';";
+$respuesta=query($sql);
+foreach ($respuesta as $fila) {
+  // code...
+  $emisor="{$fila['id_user']}";
+}
 echo "$emisor $remitente $responsable";
 
 //doc user

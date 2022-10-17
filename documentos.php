@@ -100,7 +100,7 @@ function mueveReloj(){
           <?php
           echo "<input type=\"text\" name=\"fecha\" readonly style=\"margin-top: 8px;\" value=\"$fecha\"> <br>";
           echo "<input type=\"text\" name=\"reloj\" size=\"10\" readonly style=\"margin-top: 8px;\"> <br>";
-           //sql
+           //sql de REMITENTE
              $sql="SELECT id_user,correo,Nombre_completo FROM user_upb;";
           $respuesta=query($sql);
 
@@ -113,7 +113,7 @@ function mueveReloj(){
                     echo "</option>";
                   }
           echo "</select><br>";
- 
+            //SQL DE RECEPTOR
                   echo "<select name=\"remitente\" style=\" margin-top: 8px;\"> ";
                   foreach ($respuesta as $fila) {
                     $id_user=$fila['id_user'];
@@ -123,8 +123,13 @@ function mueveReloj(){
                     echo "</option>";
                   }
           echo"</select><br>";
-         
-          echo " <input type=\"text\" name=\"emisor\" readonly style=\" margin-top: 8px;\" value=\"$user\"> <br>";
+            //SQL DE RESPONSABLE 
+          $sql="SELECT Nombre_completo from user_upb where correo='{$user}';";
+          $respuesta=query($sql);
+          foreach($respuesta as $fila){
+            $nombreC=$fila['Nombre_completo'];
+          }
+          echo " <input type=\"text\" name=\"emisor\" readonly style=\" margin-top: 8px;\" value=\"$nombreC\"> <br>";
            ?>
           <input type="file" name="file"  accept="image/png,image/jpeg,application/pdf" style=" margin-top: 8px;"> <br>
           <textarea name="desc" style="height: 100px; width: 300px; margin-top: 8px;" maxlength="200">  </textarea><br><br>

@@ -39,7 +39,6 @@ include("include/headP.php");
    // code...
   $usuario="{$fila['correo']}";
   $contrasena="{$fila['contrasena']}";
-
  }
 
 //controlador de error
