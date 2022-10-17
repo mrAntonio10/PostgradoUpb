@@ -1,0 +1,55 @@
+create table if not exists user_upb(
+id_user double not null auto_increment,
+Nombre_completo varchar(80),
+correo varchar(100),
+contrasena varchar(15),
+TELEFONO1 varchar(100),
+TELEFONO2 varchar(100),
+primary key (id_user)
+);
+
+create table if not exists campus_upb(
+id_campus double not null auto_increment,
+campus varchar(100),
+primary key (id_campus)
+);
+
+create table if not exists documentos_upb(
+id_doc double not null auto_increment,
+titulo_doc varchar(50),
+fecha_e datetime,
+fecha_r datetime, 
+descripcion_doc varchar(200),
+estado_doc varchar(20),
+primary key (id_doc )
+);
+
+
+
+
+TABLAS Q TOMAN EN CUENTA RELACIONES DE LAS ANTERIORES 
+
+
+create table if not exists travel_doc(
+id_travel double not null auto_increment,
+usuario_remitente double not null,
+usuario_destino double not null,
+usuario_responsable double not null,
+usuario_receptor double not null,
+documento double not null,
+foreign key(usuario_remitente) REFERENCES user_upb(id_user),
+foreign key(usuario_destino) REFERENCES user_upb(id_user),
+foreign key(usuario_responsable) REFERENCES user_upb(id_user),
+foreign key(usuario_receptor) REFERENCES user_upb(id_user),
+foreign key(documento) REFERENCES documentos_upb(id_doc),
+primary key (id_travel)
+);
+
+
+
+create table if not exists user_campus(
+usuario double not null,
+campus double not null,
+foreign key(usuario) REFERENCES user_upb(id_user),
+foreign key(campus) REFERENCES campus_upb(id_campus)
+);
