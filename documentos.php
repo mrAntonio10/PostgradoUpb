@@ -4,6 +4,7 @@
 include("include/conf.phpinc");
 include("include/func.phpinc");
 include("include/dbopen.php");
+include("include/headP.php");
 //PAGINA
 ?>
   <?php
@@ -34,17 +35,6 @@ function mueveReloj(){
 </script>
 
 
-   <!-- CONTAINER1 -->
-<div class="container-fluid" style="background-color: #083388; ">
-  <div class="row" style="height:18%;width: 100%; color: white; margin-left: 0.2%;">
-    <h2 style="margin-top: 1%;">
-    UPB POSTGRADO
-    </h2>
-    <div style="color: white; margin-left: 0.2%; font-size: 20px;">
-     Campus Santa Cruz
-    </div>
-  </div>
-</div>
 
 
   <!-- Container2-->
@@ -53,6 +43,10 @@ function mueveReloj(){
 
 
 <?php
+
+
+
+
   //TOMAR EN CUENTA QUE LOS DATOS USER PASS ESTÁN EN COOKIES
     //Cookies obtenidas gracias al include/conf.phpinc
       //$user & $pass
@@ -76,13 +70,13 @@ function mueveReloj(){
 ?>
   <!-- BLOQUE1 -->
     <div class="col" style=" border: 3px solid #000; border-right: 0px; margin-left: 22%;"> 
-      <div style="margin-left: 38%; margin-top: 5px">  
+      <div style="margin-left: 28%; margin-top: 5px">  
         Concepto:<br>
         Fecha de Envio: <br>
         Hora de Envio: <br>
+        Responsable: <br>
         Remitente: <br>
         Receptor: <br>
-        Responsable: <br>
         Documento: <br>
         Descripci&oacute;n
         
@@ -100,8 +94,18 @@ function mueveReloj(){
           <?php
           echo "<input type=\"text\" name=\"fecha\" readonly style=\"margin-top: 8px;\" value=\"$fecha\"> <br>";
           echo "<input type=\"text\" name=\"reloj\" size=\"10\" readonly style=\"margin-top: 8px;\"> <br>";
-           //sql de REMITENTE
-             $sql="SELECT id_user,correo,Nombre_completo FROM user_upb;";
+
+             //SQL DE RESPONSABLE  --emisor
+          $sql=" SELECT Nombre_completo,campus_upb.campus as cu from user_upb,user_campus,campus_upb where correo='$user' and user_upb.id_user=user_campus.usuario and user_campus.campus=campus_upb.id_campus;";
+          $respuesta=query($sql);
+          foreach($respuesta as $fila){
+            $nombreC=$fila['Nombre_completo'];
+            $campus=$fila['cu'];
+          }
+          echo " <input type=\"text\" name=\"emisor\" readonly style=\" margin-top: 8px;\" value=\"$nombreC\"> <br>";
+
+           //sql de REMITENTE --responsable
+            $sql="SELECT id_user,Nombre_completo from user_upb,campus_upb,user_campus where campus_upb.campus='$campus' and campus_upb.id_campus=user_campus.campus and user_upb.id_user=user_campus.usuario;";
           $respuesta=query($sql);
 
            echo "<select name=\"responsable\" style=\" margin-top: 8px;\"> <br>";
@@ -113,7 +117,10 @@ function mueveReloj(){
                     echo "</option>";
                   }
           echo "</select><br>";
-            //SQL DE RECEPTOR
+            //SQL DE RECEPTOR --remitente 
+          $campus=$_REQUEST['campus'];
+          $sql="SELECT id_user,Nombre_completo from user_upb,campus_upb,user_campus where campus_upb.campus='$campus' and campus_upb.id_campus=user_campus.campus and user_upb.id_user=user_campus.usuario;";
+          $respuesta=query($sql);
                   echo "<select name=\"remitente\" style=\" margin-top: 8px;\"> ";
                   foreach ($respuesta as $fila) {
                     $id_user=$fila['id_user'];
@@ -123,24 +130,18 @@ function mueveReloj(){
                     echo "</option>";
                   }
           echo"</select><br>";
-            //SQL DE RESPONSABLE 
-          $sql="SELECT Nombre_completo from user_upb where correo='{$user}';";
-          $respuesta=query($sql);
-          foreach($respuesta as $fila){
-            $nombreC=$fila['Nombre_completo'];
-          }
-          echo " <input type=\"text\" name=\"emisor\" readonly style=\" margin-top: 8px;\" value=\"$nombreC\"> <br>";
+           
            ?>
           <input type="file" name="file"  accept="image/png,image/jpeg,application/pdf" style=" margin-top: 8px;"> <br>
           <textarea name="desc" style="height: 100px; width: 300px; margin-top: 8px;" maxlength="200">  </textarea><br><br>
-          <input type="submit" value="Enviar" style="font-size: 25px;">
+          <input type="submit" value="Crear Ticket" style="font-size: 25px;">
         </form>
       </div>
     <!-- Fin BLOQUE 2 -->
     </div>
 
     
-    <center><h3><a href="indexPdf.php"> Volver al men&uacute; principal </a></h3></center>
+    <center><h3><a href="campus.php"> Volver a escoger el campus </a></h3></center>
 <!-- Fin del apartado principal -->
   </div>
 </div>

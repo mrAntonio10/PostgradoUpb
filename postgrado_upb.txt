@@ -32,11 +32,11 @@ TABLAS Q TOMAN EN CUENTA RELACIONES DE LAS ANTERIORES
 
 create table if not exists travel_doc(
 id_travel double not null auto_increment,
-usuario_remitente double not null,
-usuario_destino double not null,
-usuario_responsable double not null,
-usuario_receptor double not null,
-documento double not null,
+usuario_remitente double,
+usuario_destino double,
+usuario_responsable double ,
+usuario_receptor double,
+documento double,
 foreign key(usuario_remitente) REFERENCES user_upb(id_user),
 foreign key(usuario_destino) REFERENCES user_upb(id_user),
 foreign key(usuario_responsable) REFERENCES user_upb(id_user),

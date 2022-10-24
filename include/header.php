@@ -11,3 +11,22 @@
 
 <!--  BODY  -->
 <body>
+
+   <!-- CONTAINER1 -->
+<div class="container-fluid" style="background-color: #08239C; ">
+  <div class="row" style="height:18%;width: 100%; color: white; margin-left: 0.2%;">
+    <div class="col"  style="height: 110px; margin-top:5px; ">
+    <h2>
+    UPB POSTGRADO   </h2>   
+     Campus Santa Cruz
+
+      </div>
+      <div class="col" style="margin-top:50px; text-align: right;">
+        <?php
+        echo "Cuenta:<img src=\"https://us.123rf.com/450wm/valentint/valentint1602/valentint160203120/52348140-icono-de-perfil-de-usuario-bot%C3%B3n-de-internet-sobre-fondo-azul-.jpg?ver=6\" width=\"40px\"> <br> $usuario";
+        ?>
+      </div>
+   
+  </div>
+</div>
+

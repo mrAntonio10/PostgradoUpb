@@ -51,7 +51,7 @@ echo "</div>";
   echo "<br>";
    echo "<b><h3>";
     ECHO "Contraseña:";
-     echo"</h3></b> <input type=\"password\" placeholder=\"******\"  name=\"PASS\" required style=\"text-align: center;\">";
+     echo"</h3></b> <input type=\"password\" placeholder=\"******\"  name=\"PASS\" required style=\"text-align: center;\" >";
     echo "<br>";
   
   echo "<br><br>";

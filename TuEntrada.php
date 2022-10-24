@@ -13,25 +13,13 @@ include("include/headP.php");
       $point=$_POST['point'];
 
 ?>
-      
-   <!-- CONTAINER1 -->
-   
-<div class="container-fluid" style="background-color: #083388; ">
-  <div class="row" style="height:18%;width: 100%; color: white; margin-left: 0.2%;">
-    <h2 style="margin-top: 1%;">
-    UPB POSTGRADO
-    </h2>
-    <div style="color: white; margin-left: 0.2%; font-size: 20px;">
-     Campus Santa Cruz
-    </div>
-  </div>
-</div>
+
 
 
   <!-- Container2-->
 <div class="container-fluid" style="text-align: center; background-color: white;width: 100%;">
   <div class="row" style="background-color:white;">
-
+ 
 
 <?php
   //TOMAR EN CUENTA QUE LOS DATOS USER PASS ESTÁN EN COOKIES
