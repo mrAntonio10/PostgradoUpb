@@ -19,12 +19,12 @@ echo "<html>";
     //Cookies obtenidas gracias al include/conf.phpinc
       //$user & $pass
  //-------------------------------------------------
-   $sql="SELECT correo,contrasena,id_user from user_upb where correo='$user' and contrasena='$pass';";
+   $sql="SELECT Nombre_completo,contrasena,id_user from user_upb where correo='$user' and contrasena='$pass';";
   $respuesta=query($sql);
 
  foreach ($respuesta as $fila) {
    // code...
-  $usuario="{$fila['correo']}";
+  $usuario="{$fila['Nombre_completo']}";
   $contrasena="{$fila['contrasena']}";
 
  }

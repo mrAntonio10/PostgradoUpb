@@ -53,3 +53,6 @@ campus double not null,
 foreign key(usuario) REFERENCES user_upb(id_user),
 foreign key(campus) REFERENCES campus_upb(id_campus)
 );
+
+
+

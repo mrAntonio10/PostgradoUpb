@@ -51,24 +51,24 @@ ob_start();
 <body>
 
   <!-- Container2-->
-<div class="container-fluid" style="background-color: white;width: 100%; text-align:center; border: 1px solid #000;">
+<div class="container-fluid" style="background-color: white;width: 40%;  border: 1px solid #000;">
   <div class="row" style="background-color:white;font-size: 15px">
 
-<center>
+
      <!-- BLOQUE1 -->
-     
-      	<form>
-          <H3><center> <?php echo "# $TRAVEL";?> </center></H3>
-        Concepto: <input type="text" <?php echo"value=\"$titulo\"";?> readonly name="titulo" style=" margin-top: 10px;"><br> <br>
-        Fecha de Envio: <?php  echo "<input type=\"text\" value=\"$fecha\" readonly name=\"fecha\" readonly style=\"margin-top: 8px;\" value=\"$fecha\"> <br>"; ?><br>
-        Hora de Envio: <?php   echo "<input type=\"text\" value=\"$reloj\" name=\"reloj\" size=\"10\" readonly style=\"margin-top: 8px;\"> <br>";?> <br>
-        Responsable: <?php  echo " <input type=\"text\" name=\"emisor\" readonly style=\" margin-top: 8px;\" value=\"$emisor\"> <br>";
+ <H3><center> <?php echo "Correspondencia UPB <img style=\"position: absolute;margin-left:15%\"src=\"libreria/logo.png\" width=\"40\" height=\"40\"><br>Tiket# $TRAVEL";?> </center></H3>
+      	<form style="margin-left: 50px;">
+         
+        Concepto: <input type="text" <?php echo"value=\"$titulo\"";?> readonly name="titulo" style=" margin-top: 10px; margin-left: 74px;"><br> <br>
+        Fecha de Envio: <?php  echo "<input type=\"text\" value=\"$fecha\" readonly name=\"fecha\" readonly style=\"margin-top: 8px; margin-left:38px\" value=\"$fecha\"> <br>"; ?><br>
+        Hora de Envio: <?php   echo "<input type=\"text\" value=\"$reloj\" name=\"reloj\" size=\"10\" readonly style=\"margin-top: 8px; margin-left:40px\"> <br>";?> <br>
+        Responsable: <?php  echo " <input type=\"text\" name=\"emisor\" readonly style=\" margin-top: 8px;margin-left:54px\" value=\"$emisor\"> <br>";
 ?><br>
-        Remitente: <?php  echo " <input type=\"text\" name=\"emisor\" readonly style=\" margin-top: 8px;\" value=\"$remitente\"> <br>";
+        Remitente: <?php  echo " <input type=\"text\" name=\"emisor\" readonly style=\" margin-top: 8px;margin-left:65px\" value=\"$remitente\"> <br>";
 ?><br>
-        Receptor: <?php  echo " <input type=\"text\" name=\"emisor\" readonly style=\" margin-top: 8px;\" value=\"$responsable\"> <br>";
+        Receptor: <?php  echo " <input type=\"text\" name=\"emisor\" readonly style=\" margin-top: 8px;margin-left:74px\" value=\"$responsable\"> <br>";
 ?><br>
-        Descripci&oacute;n: <br><?php  echo" <textarea readonly name=\"desc\" style=\"height: 100px; width: 300px; margin-top: 8px;margin-left:360px\" maxlength=\"200\"> $descripcion </textarea>"; 
+       <a style="margin-left: 100px"> Descripci&oacute;n:</a> <br><?php  echo" <textarea readonly name=\"desc\" style=\"height: 100px; width: 300px; margin-top: 8px;margin-left:2px\" maxlength=\"200\"> $descripcion </textarea>"; 
         ?>
   <!-- QR -->
   <?php
@@ -85,11 +85,10 @@ $respuesta=query($sql);
   }
   ?>
   <br>
-        <img src="test.png" width="150" height="150">
+       <img src="test.png" width="150" height="150" style="margin-left:25%">
     
         </div>
         </form>
-</center>
        
 
 
