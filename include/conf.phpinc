@@ -8,6 +8,7 @@ $pass=$_COOKIE['PASS'];
 $db_user="root";
 $db_pass="4708";
 $db_name="postgrado_upb";
+//datos mailer
 
 
 $fechaO="04/30/2022";

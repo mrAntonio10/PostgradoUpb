@@ -6,6 +6,7 @@ use Dompdf\Dompdf;
 
 // instantiate and use the dompdf class
 $dompdf = new Dompdf();
+$dompdf->set_option('isRemoteEnabled',TRUE);
 $dompdf->loadHtml('');
 
 // (Optional) Setup the paper size and orientation

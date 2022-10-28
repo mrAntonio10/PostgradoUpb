@@ -14,7 +14,8 @@ $fecha=$_POST['fecha'];
 $reloj=$_POST['reloj'];
 $descripcion=$_POST['desc'];
 $fecha_e="$fecha $reloj";
-
+//geoubicacion
+$geo=$_POST['geo'];
 
 //USUARIOS
 $emisor=$_POST['emisor'];
@@ -29,7 +30,7 @@ foreach ($respuesta as $fila) {
 }
 
 
-$sql="INSERT INTO documentos_upb(titulo_doc,fecha_e,descripcion_doc,estado_doc) VALUES ('{$titulo}','{$fecha_e}','{$descripcion}','ESPERA');";
+$sql="INSERT INTO documentos_upb(titulo_doc,fecha_e,descripcion_doc,estado_doc) VALUES ('{$titulo}','{$fecha_e}','{$descripcion}','EN RUTA');";
 query($sql);
 
 //doc user
@@ -44,10 +45,7 @@ $respuesta=query($sql);
 
 
 
-
-
-
-$sql="INSERT INTO travel_doc (usuario_remitente,usuario_destino,usuario_responsable,documento) Values ($emisor2,$remitente,$responsable,$id_doc);";
+$sql="INSERT INTO travel_doc (usuario_remitente,usuario_destino,usuario_responsable,documento) Values ($responsable,$remitente,$emisor2,$id_doc);";
 query($sql);
 
 $sql="SELECT id_travel from travel_doc where documento=$id_doc;";
@@ -56,7 +54,6 @@ $respuesta=query($sql);
     // code...
     (double)$TRAVEL="{$fila['id_travel']}";
   }
-echo "TRAVEL PRUEBA AQUI $TRAVEL";
 ?>
 
 
@@ -90,7 +87,7 @@ echo "TRAVEL PRUEBA AQUI $TRAVEL";
         <form action="ppdedompfd.php" method="post" name="form_reloj">
           
           <?php
-          echo "<h2>$id_doc</h2>";
+          echo "<h2>Documento: $id_doc</h2>";
           echo" <input type=\"text\" value=\"$titulo\" readonly name=\"titulo\" style=\" margin-top: 10px;\"> <br>";
           echo "<input type=\"text\" value=\"$fecha\" readonly name=\"fecha\" readonly style=\"margin-top: 8px;\" value=\"$fecha\"> <br>";
           echo "<input type=\"text\" value=\"$reloj\" name=\"reloj\" size=\"10\" readonly style=\"margin-top: 8px;\"> <br>";
@@ -121,14 +118,20 @@ echo "TRAVEL PRUEBA AQUI $TRAVEL";
             echo "<input type=\"text\" readonly name=\"responsable\" value=\"$nombreC\" style=\" margin-top: 8px;\"> <br>";
 
            echo" <textarea readonly name=\"desc\" style=\"height: 100px; width: 300px; margin-top: 8px;\" maxlength=\"200\"> $descripcion </textarea>";
+
+           echo "<input type=\"hidden\" name=\"geo\" value=\"$geo\">";
            ?>
          
           <br><br>
+
           <input type="hidden" name="c" value="1">
           <input type="submit" value="Enviar Ticket" style="font-size: 25px;">
         </form>
 
       <!-- QR -->
+    
+
+
         <div style='text-align: center;'>
   <!-- insert your custom barcode setting your data in the GET parameter "data" -->
 
@@ -138,9 +141,8 @@ echo "TRAVEL PRUEBA AQUI $TRAVEL";
     id_doc: para identificar el documento y cambiar el estado :D
     
   */
-    echo "<img alt=\"Barcode Generator TEC-IT\"
-       src=\"http://barcode.tec-it.com/barcode.ashx?data=192.168.0.22/UPB_F/qr.php?sent=$TRAVEL-$id_doc&code=QRCode&eclevel=L\"/>"
   ?>
+
         </div>
 
       </div>

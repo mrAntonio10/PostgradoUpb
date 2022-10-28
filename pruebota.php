@@ -11,12 +11,12 @@
       $idd="{$fila['id_user']}";
     }
 
-    $sql ="SELECT cuo.campus as co, cud.campus as cd from campus_upb as cuo, campus_upb as cud where cuo.id_campus=$ido and cud.id_campus=$idd;";
+    $sql ="SELECT co.campus as coo,cd.campus as cdd from user_campus as uo, user_campus as ud, campus_upb as co, campus_upb as cd where uo.usuario=$ido and ud.usuario=$idd and co.id_campus=uo.campus and cd.id_campus=ud.campus;";
     $respuesta=query($sql);
     foreach ($respuesta as $fila) {
       // code...
-      $co="{$fila['co']}";
-      $cd="{$fila['cd']}";
+      $co="{$fila['coo']}";
+      $cd="{$fila['cdd']}";
     }
 //POP UP :D de ventana
 echo "<div class=\"ventana\" id=\"vent\" style=\"color: white;\">";

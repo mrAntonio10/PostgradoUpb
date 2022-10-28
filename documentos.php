@@ -5,6 +5,10 @@ include("include/conf.phpinc");
 include("include/func.phpinc");
 include("include/dbopen.php");
 include("include/headP.php");
+
+//scripts
+include("libreria/script/reloj.php");
+include("libreria/script/geoloc.php");
 //PAGINA
 ?>
   <?php
@@ -18,21 +22,8 @@ echo "<html>";
 
 
 <!--  BODY  -->
-    <body onload="mueveReloj()">
-<!-- script para tener en cuenta la hora ACTUAL en la que se envió el Doc-->
-<script language="JavaScript">
-function mueveReloj(){
-    momentoActual = new Date()
-    hora = momentoActual.getHours()
-    minuto = (momentoActual.getMinutes()<10?'0':'')+momentoActual.getMinutes()
-    segundo = (momentoActual.getSeconds()<10?'0':'')+momentoActual.getSeconds()
-    horaImprimible = hora+":"+minuto+":"+segundo
+    <body onload="geoloc();mueveReloj();">
 
-    document.form_reloj.reloj.value = horaImprimible
-
-    setTimeout("mueveReloj()",1000)
-}
-</script>
 
 
 
@@ -134,7 +125,9 @@ function mueveReloj(){
            ?>
           <input type="file" name="file"  accept="image/png,image/jpeg,application/pdf" style=" margin-top: 8px;"> <br>
           <textarea name="desc" style="height: 100px; width: 300px; margin-top: 8px;" maxlength="200">  </textarea><br><br>
+          <input type="hidden" name="geo"> 
           <input type="submit" value="Crear Ticket" style="font-size: 25px;">
+
         </form>
       </div>
     <!-- Fin BLOQUE 2 -->
@@ -145,6 +138,7 @@ function mueveReloj(){
 <!-- Fin del apartado principal -->
   </div>
 </div>
+</div></body>
 
 <?php
 //CIERRE PAGINA

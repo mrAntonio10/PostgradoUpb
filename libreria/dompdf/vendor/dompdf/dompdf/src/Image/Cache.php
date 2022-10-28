@@ -65,26 +65,7 @@ class Cache
         try {
             $full_url = Helpers::build_url($protocol, $host, $base_path, $url);
 
-            if ($full_url === null) {
-                throw new ImageException("Unable to parse image URL $url.", E_WARNING);
-            }
-
-            $parsed_url = Helpers::explode_url($full_url);
-            $protocol = strtolower($parsed_url["protocol"]);
-            $is_data_uri = strpos($protocol, "data:") === 0;
-            
-            if (!$is_data_uri) {
-                $allowed_protocols = $options->getAllowedProtocols();
-                if (!array_key_exists($protocol, $allowed_protocols)) {
-                    throw new ImageException("Permission denied on $url. The communication protocol is not supported.", E_WARNING);
-                }
-                foreach ($allowed_protocols[$protocol]["rules"] as $rule) {
-                    [$result, $message] = $rule($full_url);
-                    if (!$result) {
-                        throw new ImageException("Error loading $url: $message", E_WARNING);
-                    }
-                }
-            }
+          
 
             if ($protocol === "file://") {
                 $resolved_url = $full_url;
@@ -126,7 +107,7 @@ class Cache
 
             list($width, $height, $type) = Helpers::dompdf_getimagesize($resolved_url, $options->getHttpContext());
 
-            if (($width && $height && in_array($type, ["gif", "png", "jpeg", "bmp", "svg","webp"], true)) === false) {
+            if (($width && $height && in_array($type, ["gif", "png", "jpeg", "bmp", "svg","webp","jpg"], true)) === false) {
                 throw new ImageException("Image type unknown", E_WARNING);
             }
 
