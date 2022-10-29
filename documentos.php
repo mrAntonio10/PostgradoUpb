@@ -4,7 +4,7 @@
 include("include/conf.phpinc");
 include("include/func.phpinc");
 include("include/dbopen.php");
-include("include/headP.php");
+include("include/header.php");
 
 //scripts
 include("libreria/script/reloj.php");
@@ -134,7 +134,6 @@ echo "<html>";
     </div>
 
     
-    <center><h3><a href="campus.php"> Volver a escoger el campus </a></h3></center>
 <!-- Fin del apartado principal -->
   </div>
 </div>

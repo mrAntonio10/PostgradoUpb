@@ -1,91 +1,54 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
 <?php
 include_once("include/conf.phpinc");
 include("include/func.phpinc");
 include("include/dbopen.php");
-//PAGINA
-include("include/header.php"); 
- //COOKIES 
- $USER= $_POST['USER'];
- $PASS= $_POST['PASS'];
- $fijo=$_POST['fijo'];
- setcookie("USER",$USER);
- setcookie("PASS",$PASS);
+$default_style = "style_form";
 
+//Cookies 
+$USER = $_POST['USER'];
+$PASS = $_POST['PASS'];
+$fijo = $_POST['fijo'];
+setcookie("USER", $USER);
+setcookie("PASS", $PASS);
 
-//Para hacer el control de que estamos ingresando datos para acceder a la pagina web
-if($fijo!=1){
-//esto es mi css 
-echo"<form action=\"#\" method=\"post\">";
-echo "<h3 align=\"center\">";
-  echo "<table BORDER=\"5\" CELLPADDING=\"0\" CELLSPACING=\"0\" align=\"center\" style=\"margin-top:20%\">";
-    echo "<tr bgcolor=\"#083388\">";
-      echo "<td ALIGN=\"center\" width=\"452\">";
-        echo"<font size=\"6px\">";
-        echo "<a href=\"javascript:abrir()\" style=\"color:white;\">";
-        ECHO "Iniciar Sesión";
-        echo "</a>";
-        echo "</font>";
-
-      echo "</td>";
-    echo "</tr>";
-  echo "</table>";
-echo "</h3>";
-
-//POP UP :D de ventana
-echo "<div class=\"ventana\" id=\"vent\" style=\"color: white;\">";
-  //BOTON Cerrar
-echo "<div id=\"cerrar\">";
-    echo "<a href=\"javascript: cerrar()\">";
-    ECHO "<img src=\"https://w7.pngwing.com/pngs/844/786/png-transparent-maine-computer-icons-close-icon-thumbnail.png\" widht=\"15\" height=\"25\">";
-   echo " </a>";
-echo "</div>";
-//FIN DEL BOTON CERRAR
-//FORM
- echo "<center>";
-   echo "<h4 style=\"margin:0px;\">";
-   ECHO "INICIE SESION";
-   echo "<br><br>";
-    echo "<b><h3>";
-    ECHO "Usuario:";
-    echo "</h3> </b> <input placeholder=\"ZzzarcoX\"  name=\"USER\" required style=\"text-align: center;\">";
-  echo "<br>";
-   echo "<b><h3>";
-    ECHO "Contraseña:";
-     echo"</h3></b> <input type=\"password\" placeholder=\"******\"  name=\"PASS\" required style=\"text-align: center;\" >";
-    echo "<br>";
-  
-  echo "<br><br>";
-  echo"<input type=\"hidden\" name=\"fijo\" value=\"1\">";
-    echo "<input type=\"submit\"  name=\"accion\" value=\"Conectar\" style=\"background-color: skyblue\"> ";
- echo"</center>";
-//FIN DEL POP UP
- ECHO "</div>";
-
-
-echo "</form>";
-
- echo " <script> ";
-   echo "function continuar() {";
-    echo "document.getElementById(\"boton\").style.display=\"block\";";
-  echo "}";
-
-  echo "function abrir(){";
-    echo "document.getElementById(\"vent\").style.display=\"block\";";
- echo  "}";
-  echo "function cerrar(){";
-    echo "document.getElementById(\"vent\").style.display=\"none\";";
-  echo "}";
-echo "</script>";
-}
-
-
-
-else{
-   echo" <META HTTP-EQUIV=\"REFRESH\" CONTENT=\"2;URL=IndexPdf.php\">";
-}
-
-//CIERRE PAGINA
-echo "<div class=\"text-final\">";
-     include("include/footer.php");
-     echo "</div>";
 ?>
+<div style="font-size: 30px; font-weight: bold; ">
+    <center> 
+    <img src="https://www.upb.edu/sites/default/files/styles/nivo_slider_front_page__1920x630/public/Marca-UPB---cuadrado_0.png?itok=sPNbq0A3" width="100" height="60" style="position: absolute; margin-left: -280px; margin-top:20px">
+    <img src="https://www.upb.edu/sites/default/files/styles/nivo_slider_front_page__1920x630/public/Marca-UPB---cuadrado_0.png?itok=sPNbq0A3" width="100" height="60" style="position: absolute; margin-left: 180px; margin-top: 20px;">
+     <br>UPB DOCS<br>
+    </center>
+</div>
+
+<section class="formulario-pantalla">
+<div id="formulario-contenedor">
+<h2>UPB DOCS</h2>
+<?php
+//Condicional IF-ELSE para LOG IN 
+if ($fijo != 1) {
+
+  echo "<form action=\"#\" method=\"post\">";
+  echo "<div class=\"row my-2\">";
+  echo "</h3> </b> <input placeholder=\"Email institucional\"  name=\"USER\" required style=\"text-align:\">";
+  echo "</h3></b> <input type=\"password\" placeholder=\"Contraseña\"  name=\"PASS\" required style=\"text-align:\" >";
+  echo "</div>";
+
+  echo "<div class=\"row my-2\">";
+  echo "<input type=\"hidden\" name=\"fijo\" value=\"1\">";
+  echo "<input type=\"submit\"  class=\"btn btn-primary\" name=\"accion\" value=\"Log in\" style=\"background-color: skyblue\"> ";
+  echo "</div>";
+
+  echo "</form>";
+
+} else {
+  echo " <META HTTP-EQUIV=\"REFRESH\" CONTENT=\"2;URL=IndexPdf.php\">";
+}
+
+?>
+
+        </div>
+
+</section>

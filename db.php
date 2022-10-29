@@ -4,7 +4,7 @@ include("include/conf.phpinc");
 include("include/func.phpinc");
 include("include/dbopen.php");
 //PAGINA
-include("include/headP.php");
+include("include/header.php");
 
 
 
@@ -154,8 +154,7 @@ $respuesta=query($sql);
 
   		<center>
         <h2>
-          Datos enviados con éxito <br>
-          <a href="IndexPdf.php"> volver al inicio </a>
+          Datos enviados con éxito
         </h2>
       </center>
        
