@@ -1,0 +1,15 @@
+<?php
+
+//datos obtenidos tras enviar desde -POPUP.PHP
+$user=$_COOKIE['USER'];
+$pass=$_COOKIE['PASS'];
+
+//tomar en cuenta para acceder a la base de datos :D
+$db_user="root";
+$db_pass="1234567";
+$db_name="UPB";
+//datos mailer
+
+
+$fechaO="04/30/2022";
+?>
