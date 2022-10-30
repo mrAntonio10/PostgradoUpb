@@ -29,9 +29,11 @@ echo "<head><title>.:Postgrado SCZ:.</title>";
     $contrasena = "{$fila['contrasena']}";
   }
   ?>
-  <nav class="navbar navbar-expand-lg" style="background-color:  #F8B90B;">
+  <nav class="navbar navbar-expand-lg" style="background-color:  #FAFBFB;">
     <div class=" container-fluid">
-      <a class="navbar-brand" href="indexPdf.php"> UPB POSTGRADO </a>
+      <a class="navbar-brand" href="indexPdf.php">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Logo_UPB.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+        UPB POSTGRADO</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -48,6 +50,7 @@ echo "<head><title>.:Postgrado SCZ:.</title>";
           </svg>
           <?php
           echo "$usuario";
+          echo"$campus";
           ?>
         </div>
       </div>

@@ -13,33 +13,57 @@ $PASS = $_POST['PASS'];
 $fijo = $_POST['fijo'];
 setcookie("USER", $USER);
 setcookie("PASS", $PASS);
-
 ?>
-<div style="font-size: 30px; font-weight: bold; ">
-    <center> 
-    <img src="https://www.upb.edu/sites/default/files/styles/nivo_slider_front_page__1920x630/public/Marca-UPB---cuadrado_0.png?itok=sPNbq0A3" width="100" height="60" style="position: absolute; margin-left: -280px; margin-top:20px">
-    <img src="https://www.upb.edu/sites/default/files/styles/nivo_slider_front_page__1920x630/public/Marca-UPB---cuadrado_0.png?itok=sPNbq0A3" width="100" height="60" style="position: absolute; margin-left: 180px; margin-top: 20px;">
-     <br>UPB DOCS<br>
-    </center>
-</div>
+<body style="background-color:#030428;">
 
-<section class="formulario-pantalla">
-<div id="formulario-contenedor">
-<h2>UPB DOCS</h2>
 <?php
+
 //Condicional IF-ELSE para LOG IN 
 if ($fijo != 1) {
 
   echo "<form action=\"#\" method=\"post\">";
+
+  echo "<div class=\"container text-center\" style= \"margin-top:170px\"; >" ;
+  echo "<div class=\"col-md-4 offset-md-4\">";
+
+  echo "<div class=\"card\" style=\"max-width: 50rem;\">";
+
+  echo "<div class=\"card-header\" style=\"font-size: 30px; font-weight: bold;\">";
+  echo "<img src=\"https://upload.wikimedia.org/wikipedia/commons/1/1f/Logo_UPB.jpg\" alt=\"Logo\" width=\"35\" height=\"35\" class=\"d-inline-block align-text-rigth\">";
+  echo "upbdocs";
+
+  echo "</div>";
+
+  echo "<div class=\"card-body\">";
   echo "<div class=\"row my-2\">";
-  echo "</h3> </b> <input placeholder=\"Email institucional\"  name=\"USER\" required style=\"text-align:\">";
-  echo "</h3></b> <input type=\"password\" placeholder=\"Contraseña\"  name=\"PASS\" required style=\"text-align:\" >";
+  echo "<input placeholder=\"Email institucional\"  name=\"USER\" required style=\"text-align:\">"; 
   echo "</div>";
 
   echo "<div class=\"row my-2\">";
-  echo "<input type=\"hidden\" name=\"fijo\" value=\"1\">";
-  echo "<input type=\"submit\"  class=\"btn btn-primary\" name=\"accion\" value=\"Log in\" style=\"background-color: skyblue\"> ";
+
+  echo "<input type=\"password\" placeholder=\"Contraseña\"  name=\"PASS\" required style=\"text-align:\" >";
+
   echo "</div>";
+  echo "</div>";
+
+
+  echo "<div class=\"card-footer bg-transparent\">";
+  echo "<div class=\"row my-2\">";
+  echo "<input type=\"hidden\" name=\"fijo\" value=\"1\">";
+  echo "<input type=\"submit\"  class=\"btn \" name=\"accion\" value=\"Log in\" style=\"background-color: #E8B82B\"> ";
+  echo "</div>";
+  echo "</div>";
+
+
+
+  echo "</div>";
+
+
+  echo "</div>";
+  echo "</div>";
+
+
+
 
   echo "</form>";
 
@@ -48,7 +72,5 @@ if ($fijo != 1) {
 }
 
 ?>
+</body>
 
-        </div>
-
-</section>

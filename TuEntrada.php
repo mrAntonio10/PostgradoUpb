@@ -5,7 +5,7 @@ include("include/conf.phpinc");
 include("include/func.phpinc");
 include("include/dbopen.php");
 //PAGINA
-include("include/headP.php");
+include("include/header.php");
 
 //apartado del post para obtener informacion de cada documento
 $desc = $_POST['desc'];

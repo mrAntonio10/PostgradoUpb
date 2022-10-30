@@ -29,10 +29,10 @@ echo "<head><title>.:Postgrado SCZ:.</title>";
     $contrasena = "{$fila['contrasena']}";
   }
   ?>
-  <nav class="navbar navbar-expand-lg" style="background-color:  #F8B90B;">
+  <nav class="navbar navbar-expand-lg" style="background-color:  #FAFBFB;">
     <div class=" container-fluid">
       <a class="navbar-brand" href="indexPdf.php">
-        <img src="https://www.upb.edu/sites/default/files/styles/nivo_slider_front_page__1920x630/public/Marca-UPB---cuadrado_0.png?itok=sPNbq0A3" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Logo_UPB.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
         UPB POSTGRADO
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,11 +40,11 @@ echo "<head><title>.:Postgrado SCZ:.</title>";
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav me-auto mb-2 mb-lg-0">
-        <a type="button" class="btn btn-warning" href="campus.php">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 20 20">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-          </svg>
-          Enviar Documento
+          <a type="button" class="btn btn-warning" href="campus.php">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 20 20">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+            </svg>
+            Enviar Documento
           </a>
         </div>
 
@@ -55,6 +55,8 @@ echo "<head><title>.:Postgrado SCZ:.</title>";
           </svg>
           <?php
           echo "$usuario";
+          echo "$campus";
+
           ?>
         </div>
       </div>
