@@ -6,8 +6,8 @@ $pass=$_COOKIE['PASS'];
 
 //tomar en cuenta para acceder a la base de datos :D
 $db_user="root";
-$db_pass="4708";
-$db_name="postgrado_upb";
+$db_pass="1234567";
+$db_name="upb";
 //datos mailer
 
 

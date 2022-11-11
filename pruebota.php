@@ -24,8 +24,9 @@ echo "<div class=\"ventana\" id=\"vent\" style=\"color: white;\">";
   //BOTON Cerrar
 echo "<div id=\"cerrar\">";
     echo "<a href=\"javascript: cerrar()\">";
-    ECHO "<img src=\"https://w7.pngwing.com/pngs/844/786/png-transparent-maine-computer-icons-close-icon-thumbnail.png\" widht=\"15\" height=\"25\">";
-   echo " </a>";
+    ECHO "<button type=\"button\" class=\"btn-close btn-close-white\">";
+    echo " </button>";
+       echo " </a>";
 echo "</div>";
 //FIN DEL BOTON CERRAR
 //FORM
