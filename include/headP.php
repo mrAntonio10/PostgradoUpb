@@ -31,10 +31,9 @@ echo "<head><title>.:Postgrado SCZ:.</title>";
   ?>
   <nav class="navbar navbar-expand-lg" style="background-color:  #FAFBFB;">
     <div class=" container-fluid">
-      <a class="navbar-brand" href="">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Logo_UPB.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-        UPB POSTGRADO
-      </a>
+      <a class="navbar-brand" style="font-size: 25px; font-weight: bold;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Logo_UPB.jpg" alt="Logo" width="40" height="30" class="d-inline-block align-text-rigth">
+        upbdocs      </a>
         <div class="col-15">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 20 20">
             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />

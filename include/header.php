@@ -31,9 +31,9 @@ echo "<head><title>.:Postgrado SCZ:.</title>";
   ?>
   <nav class="navbar navbar-expand-lg" style="background-color:  #FAFBFB;">
     <div class=" container-fluid">
-      <a class="navbar-brand" href="">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Logo_UPB.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-        UPB POSTGRADO</a>
+      <a class="navbar-brand" style="font-size: 25px; font-weight: bold;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Logo_UPB.jpg" alt="Logo" width="40" height="30" class="d-inline-block align-text-rigth">
+        upbdocs</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
