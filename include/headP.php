@@ -31,23 +31,10 @@ echo "<head><title>.:Postgrado SCZ:.</title>";
   ?>
   <nav class="navbar navbar-expand-lg" style="background-color:  #FAFBFB;">
     <div class=" container-fluid">
-      <a class="navbar-brand" href="indexPdf.php">
+      <a class="navbar-brand" href="">
         <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Logo_UPB.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
         UPB POSTGRADO
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav me-auto mb-2 mb-lg-0">
-          <a type="button" class="btn btn-warning" href="campus.php">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 20 20">
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-            </svg>
-            Enviar Documento
-          </a>
-        </div>
-
         <div class="col-15">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 20 20">
             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -62,3 +49,6 @@ echo "<head><title>.:Postgrado SCZ:.</title>";
       </div>
     </div>
   </nav>
+
+
+
