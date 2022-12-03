@@ -16,6 +16,10 @@
 	$resultado->close();
 }
 
+function countRow($query){
+ $row= $query->num_rows;
+ return $row;
+}
 
 function Tiempo(){
   date_default_timezone_set('America/La_Paz');
@@ -27,107 +31,4 @@ echo "Han pasado: ";
 echo $interval->days . ' días desde que subimos la primera versión' . PHP_EOL;
 }
 
-function bandejaEntrada($respuesta){
-
-          //INICIO DE LA TABLA :D
-          echo "<center style=\"border-right: 2px solid #000\">BANDEJA DE ENTRADA</center>";
-          echo "<table class=\"table table-dark\"
-      style=\"border: 1px solid #FDFEFE\">";
-          echo "<tr style=\"text-align: center;\">";
-          echo "<th style=\"border-right: 1px solid #FDFEFE\"> Estado </th>";
-          echo "<th style=\"border-right: 1px solid #FDFEFE\"> T&iacute;tulo </th>";
-          echo "<th style=\"border-right: 1px solid #FDFEFE\"> Fecha de Envio </th>";
-          echo "<th style=\"border-right: 1px solid #FDFEFE\"> Responsable </th>";
-          echo "<th style=\"border-right: 1px solid #FDFEFE\"> Remitente </th>";
-          echo "<th style=\"border-right: 1px solid #FDFEFE\">  </th>";
-          echo "</tr>";
-          foreach ($respuesta as $fila) {
-
-            // code...
-            echo "<tr style=\"text-align: center; \">";
-            echo "<td style=\"border-right: 1px solid #FDFEFE\">{$fila['estado_doc']} </td>";
-            echo "<td style=\"border-right: 1px solid #FDFEFE;\"> ";
-
-            echo "{$fila['titulo_doc']}
-        </td>";
-
-
-            echo "<td style=\"border-right: 1px solid #FDFEFE\"> {$fila['fecha_e']} </td>";
-            echo "<td style=\"border-right: 1px solid #FDFEFE\"> {$fila['u1']} </td>";
-            echo "<td style=\"border-right: 1px solid #FDFEFE\"> {$fila['u2']} </td>";
-
-            echo "<form action=\"#\" method=\"post\">";
-            $descripcion = "{$fila['descripcion_doc']}";
-            $id_origen = "{$fila['oop']}";
-            echo "<input name=\"desc\" type=\"hidden\" value=\"$descripcion\">";
-            echo "<input name=\"id_o\" type=\"hidden\" value=\"$id_origen\">";
-            echo "<input name=\"point\" type=\"hidden\" value=\"10\">";
-            echo "<td style=\"border-right: 1px solid #FDFEFE\">";
-            echo "<input type=\"submit\" value=\"+\">";
-            echo "</td>";
-            echo "</form>";
-            echo "</tr>";
-          }
-
-          echo "</table>";
-
-
-}
-
-function bandejaSalida($respuesta){
- foreach ($respuesta as $fila) {
-            // code...
-            $usuario = "{$fila['correo']}";
-            $contrasena = "{$fila['contrasena']}";
-            $id_log = "{$fila['id_user']}";
-          }
-
-          //controlador de error
-          if (empty($usuario) && empty($contrasena)) {
-            echo "<CENTER style=\"margin-top: 20px\"><h1> Usuario no encontrado: <br><a href=\"popup.php\"> volver atrás </a> </h1></CENTER>";
-            exit();
-          }
-
-          $sql = "SELECT uu.id_user as oop,du.descripcion_doc,du.estado_doc,du.titulo_doc,du.fecha_e,uu.Nombre_completo as u1,uu2.Nombre_completo as u2 from documentos_upb as du, travel_doc as td, user_upb as uu, user_upb as uu2 Where td.usuario_remitente=$id_log and td.documento=du.id_doc and td.usuario_destino=uu.id_user and td.usuario_remitente=uu2.id_user ORDER by td.documento DESC;";
-          $respuesta = query($sql);
-          //INICIO DE LA TABLA :D
-          echo "<center>BANDEJA DE SALIDA</center>";
-          echo "<table class=\"table table-dark\"
-      style=\"border: 1px solid #FDFEFE\">";
-          echo "<tr style=\"text-align: center;\">";
-          echo "<th style=\"border-right: 1px solid #FDFEFE\"> T&iacute;tulo </th>";
-          echo "<th style=\"border-right: 1px solid #FDFEFE\"> Fecha de Envio </th>";
-          echo "<th style=\"border-right: 1px solid #FDFEFE\"> Receptor </th>";
-          echo "<th style=\"border-right: 1px solid #FDFEFE\">  </th>";
-          echo "</tr>";
-
-
-          foreach ($respuesta as $fila) {
-
-            // code...
-            echo "<tr style=\"text-align: center; \">";
-            echo "<td style=\"border-right: 1px solid #FDFEFE;\"> ";
-
-            echo "{$fila['titulo_doc']}
-        </td>";
-            echo "<td style=\"border-right: 1px solid #FDFEFE\"> {$fila['fecha_e']} </td>";
-            echo "<td style=\"border-right: 1px solid #FDFEFE\"> {$fila['u1']} </td>";
-
-            echo "<form action=\"#\" method=\"post\">";
-            $descripcion = "{$fila['descripcion_doc']}";
-            $id_origen = "{$fila['oop']}";
-            echo "<input name=\"desc\" type=\"hidden\" value=\"$descripcion\">";
-            echo "<input name=\"id_o\" type=\"hidden\" value=\"$id_origen\">";
-            echo "<input name=\"point\" type=\"hidden\" value=\"10\">";
-            echo "<td style=\"border-right: 1px solid #FDFEFE\">";
-            echo "<input type=\"submit\" value=\"+\">";
-            echo "</td>";
-            echo "</form>";
-            echo "</tr>";
-          }
-
-          echo "</table>";
-
-
-}
 ?>

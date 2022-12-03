@@ -5,6 +5,7 @@ include("include/func.phpinc");
 include("include/dbopen.php");
 //PAGINA
 include("include/headP.php");
+include("include/TablasDinamicas.php");
 ?>
 
 <?php
@@ -38,8 +39,6 @@ if (empty($usuario) && empty($contrasena)) {
     $desc = $_POST['desc'];
     $ido = $_POST['id_o'];
     $point = $_POST['point'];
-    ?>
-    <?php
     //TOMAR EN CUENTA QUE LOS DATOS USER PASS ESTÁN EN COOKIES
     //Cookies obtenidas gracias al include/conf.phpinc
     //$user & $pass
@@ -62,53 +61,14 @@ if (empty($usuario) && empty($contrasena)) {
 
     $sql = "SELECT uu.id_user as oop,du.descripcion_doc,du.estado_doc,du.titulo_doc,du.fecha_e,uu.Nombre_completo as u1,uu2.Nombre_completo as u2 from documentos_upb as du, travel_doc as td, user_upb as uu, user_upb as uu2 Where td.usuario_destino=$id_log and td.documento=du.id_doc and td.usuario_responsable=uu.id_user and td.usuario_remitente=uu2.id_user ORDER by td.documento DESC;";
     $respuesta = query($sql);
-    //INICIO DE LA TABLA :D
-
-    echo "<table class=\"table table-dark\"
-      style=\"border: 1px solid #FDFEFE\">";
-    echo "<tr style=\"text-align: center;\">";
-    echo "<th style=\"border-right: 1px solid #FDFEFE\"> Estado </th>";
-    echo "<th style=\"border-right: 1px solid #FDFEFE\"> T&iacute;tulo </th>";
-    echo "<th style=\"border-right: 1px solid #FDFEFE\"> Fecha de Envio </th>";
-    echo "<th style=\"border-right: 1px solid #FDFEFE\"> Responsable </th>";
-    echo "<th style=\"border-right: 1px solid #FDFEFE\"> Remitente </th>";
-    echo "<th style=\"border-right: 1px solid #FDFEFE\">  </th>";
-    echo "</tr>";
-
-
-    foreach ($respuesta as $fila) {
-
-      // code...
-      echo "<tr style=\"text-align: center; \">";
-      echo "<td style=\"border-right: 1px solid #FDFEFE\">{$fila['estado_doc']} </td>";
-      echo "<td style=\"border-right: 1px solid #FDFEFE;\"> ";
-
-      echo "{$fila['titulo_doc']}
-        </td>";
-
-
-      echo "<td style=\"border-right: 1px solid #FDFEFE\"> {$fila['fecha_e']} </td>";
-      echo "<td style=\"border-right: 1px solid #FDFEFE\"> {$fila['u1']} </td>";
-      echo "<td style=\"border-right: 1px solid #FDFEFE\"> {$fila['u2']} </td>";
-
-      echo "<form action=\"#\" method=\"post\">";
-      $descripcion = "{$fila['descripcion_doc']}";
-      $id_origen = "{$fila['oop']}";
-      echo "<input name=\"desc\" type=\"hidden\" value=\"$descripcion\">";
-      echo "<input name=\"id_o\" type=\"hidden\" value=\"$id_origen\">";
-      echo "<input name=\"point\" type=\"hidden\" value=\"10\">";
-      echo "<td style=\"border-right: 1px solid #FDFEFE\">";
-      echo "<input type=\"submit\" value=\"+\">";
-      echo "</td>";
-      echo "</form>";
-      echo "</tr>";
-    }
-
-    echo "</table>";
-
-
+    $contar= countRow($respuesta)/10;
+    $contar= ceil($contar);
     ?>
 
+    <?php
+   bandejaEntrada($respuesta);
+
+    ?>
     <?php
     include("pruebota.php");
 
@@ -132,14 +92,7 @@ if (empty($usuario) && empty($contrasena)) {
     $point = $_POST['point'];
     ?>
     <?php
-    //TOMAR EN CUENTA QUE LOS DATOS USER PASS ESTÁN EN COOKIES
-    //Cookies obtenidas gracias al include/conf.phpinc
-    //$user & $pass
-    //-------------------------------------------------
-    $sql = "SELECT * from user_upb where correo='{$user}' and contrasena='{$pass}';";
-    $respuesta = query($sql);
-
-    foreach ($respuesta as $fila) {
+     foreach ($respuesta as $fila) {
       // code...
       $usuario = "{$fila['correo']}";
       $contrasena = "{$fila['contrasena']}";
@@ -154,43 +107,8 @@ if (empty($usuario) && empty($contrasena)) {
 
     $sql = "SELECT uu.id_user as oop,du.descripcion_doc,du.estado_doc,du.titulo_doc,du.fecha_e,uu.Nombre_completo as u1,uu2.Nombre_completo as u2 from documentos_upb as du, travel_doc as td, user_upb as uu, user_upb as uu2 Where td.usuario_remitente=$id_log and td.documento=du.id_doc and td.usuario_destino=uu.id_user and td.usuario_remitente=uu2.id_user ORDER by td.documento DESC;";
     $respuesta = query($sql);
-    //INICIO DE LA TABLA :D
-
-    echo "<table class=\"table table-dark\"
-      style=\"border: 1px solid #FDFEFE\">";
-    echo "<tr style=\"text-align: center;\">";
-    echo "<th style=\"border-right: 1px solid #FDFEFE\"> T&iacute;tulo </th>";
-    echo "<th style=\"border-right: 1px solid #FDFEFE\"> Fecha de Envio </th>";
-    echo "<th style=\"border-right: 1px solid #FDFEFE\"> Receptor </th>";
-    echo "<th style=\"border-right: 1px solid #FDFEFE\">  </th>";
-    echo "</tr>";
-
-
-    foreach ($respuesta as $fila) {
-
-      // code...
-      echo "<tr style=\"text-align: center; \">";
-      echo "<td style=\"border-right: 1px solid #FDFEFE;\"> ";
-
-      echo "{$fila['titulo_doc']}
-        </td>";
-      echo "<td style=\"border-right: 1px solid #FDFEFE\"> {$fila['fecha_e']} </td>";
-      echo "<td style=\"border-right: 1px solid #FDFEFE\"> {$fila['u1']} </td>";
-
-      echo "<form action=\"#\" method=\"post\">";
-      $descripcion = "{$fila['descripcion_doc']}";
-      $id_origen = "{$fila['oop']}";
-      echo "<input name=\"desc\" type=\"hidden\" value=\"$descripcion\">";
-      echo "<input name=\"id_o\" type=\"hidden\" value=\"$id_origen\">";
-      echo "<input name=\"point\" type=\"hidden\" value=\"10\">";
-      echo "<td style=\"border-right: 1px solid #FDFEFE\">";
-      echo "<input type=\"submit\" value=\"+\">";
-      echo "</td>";
-      echo "</form>";
-      echo "</tr>";
-    }
-
-    echo "</table>";
+    //BANDEJA DE SALIDA FUNC
+   bandejaSalida($respuesta);
     ?>
     <?php
     include("pruebota.php");
@@ -205,7 +123,27 @@ if (empty($usuario) && empty($contrasena)) {
 
   </div>
 </div>
+
+<script type="text/javascript">
+            $(document).ready(function() {
+    $('#workers_table').DataTable( {
+        language: {
+            url: "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"
+        }
+    });
+});
+</script>
+<script type="text/javascript">
+            $(document).ready(function() {
+    $('#workers_table2').DataTable( {
+        language: {
+            url: "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"
+        }
+    });
+});
+            </script>
 <?php
+
 //CIERRE PAGINA
 echo "<div class=\"text-final\">";
 include("include/footer.php");

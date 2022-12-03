@@ -30,7 +30,7 @@ include("include/header.php");
   </div>
   <div class="col">
     <div class="card h-100">
-    <a href="documentos.php?campus=SantaCruz"> 
+    <a href="documentos.php?campus=Santa Cruz"> 
       <img src="https://www.upb.edu/sites/default/files/bloque-ciudades/campus-santa-cruz-4.jpg" class="card-img-top" alt="...">
       </a>
 
