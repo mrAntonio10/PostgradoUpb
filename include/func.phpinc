@@ -1,4 +1,4 @@
-<?php
+  <?php
 //ESTA ES UNA FUNCION PARA mysqli
  function query($sql){
   // estas estan dentro de conf.phpinc

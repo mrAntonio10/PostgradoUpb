@@ -73,7 +73,7 @@ ob_start();
   <!-- QR -->
   <?php
   require_once("libreria/phpqrcode/qrlib.php");
-  QRcode::png("http://192.168.0.16/UPB_F/qr.php?sent=$TRAVEL-$id_doc","test.png");
+  QRcode::png("http://192.168.35.213/PostgradoUpb/qr.php?sent=$TRAVEL-$id_doc","test.png");
 
   //mail
   // Enviarlo   $responsable

@@ -18,7 +18,7 @@ h1{
     padding: 33px;
     min-height: 250px;
     border-radius: 22px;
-    position: fixed;
+    position: absolute;
     left: 38%;
     top: 22%;
     display: none;

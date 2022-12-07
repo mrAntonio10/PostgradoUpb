@@ -86,26 +86,8 @@ if (empty($usuario) && empty($contrasena)) {
   <div class="col-6" style="font-size: 30px; font-weight: bold;">
     Bandeja de salida
     <?php
-    //apartado del post para obtener informacion de cada documento
-    $desc = $_POST['desc'];
-    $ido = $_POST['id_o'];
-    $point = $_POST['point'];
-    ?>
-    <?php
-     foreach ($respuesta as $fila) {
-      // code...
-      $usuario = "{$fila['correo']}";
-      $contrasena = "{$fila['contrasena']}";
-      $id_log = "{$fila['id_user']}";
-    }
 
-    //controlador de error
-    if (empty($usuario) && empty($contrasena)) {
-      echo "<CENTER style=\"margin-top: 20px\"><h1> Usuario no encontrado: <br><a href=\"popup.php\"> volver atrás </a> </h1></CENTER>";
-      exit();
-    }
-
-    $sql = "SELECT uu.id_user as oop,du.descripcion_doc,du.estado_doc,du.titulo_doc,du.fecha_e,uu.Nombre_completo as u1,uu2.Nombre_completo as u2 from documentos_upb as du, travel_doc as td, user_upb as uu, user_upb as uu2 Where td.usuario_remitente=$id_log and td.documento=du.id_doc and td.usuario_destino=uu.id_user and td.usuario_remitente=uu2.id_user ORDER by td.documento DESC;";
+    $sql = "SELECT uu.id_user as oop,du.descripcion_doc,du.estado_doc as es,du.titulo_doc,du.fecha_e,uu.Nombre_completo as u1,uu2.Nombre_completo as u2 from documentos_upb as du, travel_doc as td, user_upb as uu, user_upb as uu2 Where td.usuario_remitente=$id_log and td.documento=du.id_doc and td.usuario_destino=uu.id_user and td.usuario_remitente=uu2.id_user ORDER by td.documento DESC;";
     $respuesta = query($sql);
     //BANDEJA DE SALIDA FUNC
    bandejaSalida($respuesta);

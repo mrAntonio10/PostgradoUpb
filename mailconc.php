@@ -14,7 +14,7 @@ use PHPMailer\PHPMailer\Exception;
 
                             RESPONSABLE REMITENTE IMPORTAN
 */
-  GLOBAL $titulo,$emisor,$remitente,$responsable,$descripcion,$geo,$estado,$TRAVEL,$correo;
+  GLOBAL $titulo,$emisor,$remitente,$responsable,$descripcion,$geo,$estado,$TRAVEL,$correo,$c,$a;
 require 'libreria/mailer/PHPMailer/src/Exception.php';
 require 'libreria/mailer/PHPMailer/src/PHPMailer.php';
 require 'libreria/mailer/PHPMailer/src/SMTP.php';
@@ -24,7 +24,7 @@ $mail = new PHPMailer(true);
 
 try {
     //Server settings
-    $mail->SMTPDebug = 2;                      //Enable verbose debug output
+    $mail->SMTPDebug = 0;                      //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';'smtp.upb.edu';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -44,8 +44,12 @@ try {
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Sistema de Correspondencia-UPB';
+    if(!empty($c)){
+        $mail->Body    = $a;
+    }
+    else{
     $mail->Body    = "<center><b>Hola $responsable - Correspondencia #$TRAVEL</b></center>Estado del Documento: $estado<br>Concepto: $titulo<br>Descripcion: $descripcion<br>Remitente: $remitente<br>Ver geolocalizacion: $geo";
-
+}
     $mail->send();
     echo"<script type=\"text/javascript\">";
  echo alert("Mensaje enviado!");

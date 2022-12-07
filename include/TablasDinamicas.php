@@ -55,10 +55,11 @@ function bandejaEntrada($respuesta){
 <?php
 function bandejaSalida($respuesta){
   ?>
-<table id="workers_table2" class="table table-dark" style="width:100%">
+<table id="workers_table2" class="table table-dark" style="width:100%;">
 <thead>
               <tr>
                 <?php
+                echo "<th style=\"border-right: 1px solid #FDFEFE\"> Estado </th>";
                 echo "<th style=\"border-right: 1px solid #FDFEFE\"> T&iacute;tulo </th>";
     echo "<th style=\"border-right: 1px solid #FDFEFE\"> Fecha de Envio </th>";
     echo "<th style=\"border-right: 1px solid #FDFEFE\"> Receptor </th>";
@@ -72,8 +73,9 @@ function bandejaSalida($respuesta){
 
       // code...
       echo "<tr style=\"text-align: center; \">";
-      echo "<td style=\"border-right: 1px solid #FDFEFE;\"> ";
 
+      echo "<td style=\"border-right: 1px solid #FDFEFE\">{$fila['es']} </td>";
+      echo "<td style=\"border-right: 1px solid #FDFEFE;\"> ";
       echo "{$fila['titulo_doc']}
         </td>";
       echo "<td style=\"border-right: 1px solid #FDFEFE\"> {$fila['fecha_e']} </td>";

@@ -14,6 +14,13 @@ $var1=$_REQUEST['sent'];
 $var=explode("-",$var1);
 $travel=$var[0];
 $doc=$var[1];
+
+     //verificar si establecimos conexion
+     if(empty($user)){
+           echo " <META HTTP-EQUIV=\"REFRESH\" CONTENT=\"2;URL=popup.php\">";
+     }
+else{
+  
 ?>
 <!--  BODY  -->
     <body onload="geoloc();">
@@ -47,7 +54,8 @@ $doc=$var[1];
      <!-- aceptar ticket form-->
      <form action="#" method="post" name="form_reloj">
           <input type="hidden" name="ac" value="1">
-          <input type="text" name="geo">
+        <textarea name="acep" style="height: 100px; width: 300px; margin-top: 8px;" maxlength="100">  </textarea><br>
+          <br>      
           <input type="submit" name="envio" value="Aceptar Ticket" style="width: 200px; height: 100px; font-size: 25px; ">
      </form>
   
@@ -55,27 +63,27 @@ $doc=$var[1];
     
      <form action="#" method="post" name="form_reloj2">
           <input type="hidden" name="ac" value="2">
-          <input type="text" name="geo">
+          <textarea name="dev" style="height: 100px; width: 300px; margin-top: 8px;" maxlength="100">  </textarea><br>
+          <br>      
           <input type="submit" name="envio" value="Devolver Ticket" style="width: 200px; height: 100px; font-size: 25px; "> 
      </form>
      <?php
      }
      else if($c==1){
+          $mensaje=$_POST['acep'];
           $sql="UPDATE documentos_upb set estado_doc='recibido' where id_doc=$doc;";
           query($sql);
-          echo "Tikect $travel RECIBIDO";
-          //include_once("mailconc.php");
-          echo $geo;
-           ECHO "HOLA PUTOTO<BR>Travel: $TRAVEL<br>TITULO: $titulo<br>REMITENTE $remitente<br>RESPONSABLE $responsable<br>EMISOR $emisor<br>DESCRIPCION $descripcion<br>ESTADO $estado<br>C1 $correo<br>C2 $correo2";
+          echo "Tikect $travel RECIBIDO";         
+           $a= "<BR>Travel: $TRAVEL<br>TITULO: $titulo<br>REMITENTE $remitente<br>RESPONSABLE $responsable<br>EMISOR $emisor<br>DESCRIPCION $descripcion<br>ESTADO $estado<br>C1 $correo<br>C2 $correo2<br>Mensaje Check out: $mensaje";
+           include("mailconc.php");
      }
      else if($c==2){
+          $mensaje=$_POST['dev'];
            $sql="UPDATE documentos_upb set estado_doc='devuelto' where id_doc=$doc;";
           query($sql);
           echo "Tikect $travel en estado de devolución";
-
-           echo $geo;
-           ECHO "HOLA PUTOTO<BR>Travel: $TRAVEL<br>TITULO: $titulo<br>REMITENTE $remitente<br>RESPONSABLE $responsable<br>EMISOR $emisor<br>DESCRIPCION $descripcion<br>ESTADO $estado<br>C1 $correo<br>C2 $correo2";
-           // include_once("mailconc.php");
+           $a= "<BR>Travel: $TRAVEL<br>TITULO: $titulo<br>REMITENTE $remitente<br>RESPONSABLE $responsable<br>EMISOR $emisor<br>DESCRIPCION $descripcion<br>ESTADO $estado<br>C1 $correo<br>C2 $correo2<br>Mensaje Check out: $mensaje";
+                    include_once("mailconc.php");
      }
      ?>
 <!-- FIN CONTAINER 2 -->
@@ -85,6 +93,8 @@ $doc=$var[1];
 
 <?php
 
+
+}
 //CIERRE PAGINA
 echo "<div class=\"text-final\">";
      include("include/footer.php");
