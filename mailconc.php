@@ -14,7 +14,7 @@ use PHPMailer\PHPMailer\Exception;
 
                             RESPONSABLE REMITENTE IMPORTAN
 */
-  GLOBAL $titulo,$emisor,$remitente,$responsable,$descripcion,$geo,$estado,$TRAVEL,$correo,$c,$a;
+  GLOBAL $titulo,$emisor,$remitente,$responsable,$descripcion,$geo,$estado,$TRAVEL,$correo,$c,$a,$sAdjunto;
 require 'libreria/mailer/PHPMailer/src/Exception.php';
 require 'libreria/mailer/PHPMailer/src/PHPMailer.php';
 require 'libreria/mailer/PHPMailer/src/SMTP.php';
@@ -48,7 +48,15 @@ try {
         $mail->Body    = $a;
     }
     else{
-    $mail->Body    = "<center><b>Hola $responsable - Correspondencia #$TRAVEL</b></center>Estado del Documento: $estado<br>Concepto: $titulo<br>Descripcion: $descripcion<br>Remitente: $remitente<br>Ver geolocalizacion: $geo";
+    $mail->Body    = "<center><b>Querid@ $responsable<br>
+    Usted tiene un nuevo correo - Sistema Correspondencia UPB <br>
+    Corresponencia #$TRAVEL</b></center>Estado del Documento: $estado<br>
+    Concepto: $titulo<br>
+    Descripcion: $descripcion<br>
+    Remitente: $remitente<br>
+    Lugar de envío: $geo";
+      //CONFIGURACIÓN DE ARCHIVOS ADJUNTOS 
+        //$mail->addAttachment($sAdjunto);
 }
     $mail->send();
     echo"<script type=\"text/javascript\">";

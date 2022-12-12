@@ -48,6 +48,11 @@ else{
           $correo2="{$fila['c2']}";
           }
      //fin del mensaje
+     if($estado!='EN RUTA'){
+          ECHO "<center> <h2>QR utilizado,redirigientode al men&uacute; principal</h2> </center>";
+          echo "<META HTTP-EQUIV=\"REFRESH\" CONTENT=\"2;URL=IndexPdf.php\">";
+     }
+     else{
      if($c==0){
      ?>
      <br><br><br>    
@@ -72,18 +77,35 @@ else{
      else if($c==1){
           $mensaje=$_POST['acep'];
           $sql="UPDATE documentos_upb set estado_doc='recibido' where id_doc=$doc;";
-          query($sql);
-          echo "Tikect $travel RECIBIDO";         
-           $a= "<BR>Travel: $TRAVEL<br>TITULO: $titulo<br>REMITENTE $remitente<br>RESPONSABLE $responsable<br>EMISOR $emisor<br>DESCRIPCION $descripcion<br>ESTADO $estado<br>C1 $correo<br>C2 $correo2<br>Mensaje Check out: $mensaje";
+          query($sql);         
+           $a= "<center><b>Querid@ $responsable<br>
+    Usted tiene un nuevo correo - Sistema Correspondencia UPB <br>
+    Corresponencia #$TRAVEL</b></center>Estado del Documento: Aceptado<br>
+    Mensaje:$mensaje<br>
+    Concepto: $titulo<br>
+    Descripcion: $descripcion<br>
+    Remitente: $remitente<br>
+    Lugar de envío: $geo";
+          echo "<META HTTP-EQUIV=\"REFRESH\" CONTENT=\"2;URL=IndexPdf.php\">"; 
            include("mailconc.php");
+          
      }
      else if($c==2){
           $mensaje=$_POST['dev'];
            $sql="UPDATE documentos_upb set estado_doc='devuelto' where id_doc=$doc;";
           query($sql);
-          echo "Tikect $travel en estado de devolución";
-           $a= "<BR>Travel: $TRAVEL<br>TITULO: $titulo<br>REMITENTE $remitente<br>RESPONSABLE $responsable<br>EMISOR $emisor<br>DESCRIPCION $descripcion<br>ESTADO $estado<br>C1 $correo<br>C2 $correo2<br>Mensaje Check out: $mensaje";
-                    include_once("mailconc.php");
+           $a= "<center><b>Querid@ $responsable<br>
+    Usted tiene un nuevo correo - Sistema Correspondencia UPB <br>
+    Corresponencia #$TRAVEL</b></center>Estado del Documento: Devuelto<br>
+    Mensaje: $mensaje<br>
+    Concepto: $titulo<br>
+    Descripcion: $descripcion<br>
+    Remitente: $remitente<br>
+    Lugar de envío: $geo";
+          echo "<META HTTP-EQUIV=\"REFRESH\" CONTENT=\"2;URL=IndexPdf.php\">"; 
+          include_once("mailconc.php");
+                    
+     }
      }
      ?>
 <!-- FIN CONTAINER 2 -->

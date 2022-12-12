@@ -8,12 +8,18 @@ include("include/dbopen.php");
 
 
 
-//DOC
+
+//DOC variables
 $titulo=$_POST['titulo'];
 $fecha=$_POST['fecha'];
 $reloj=$_POST['reloj'];
 $descripcion=$_POST['desc'];
 $fecha_e="$fecha $reloj";
+
+//para almacenar en la base de datos
+$date = date_create($fecha_e);
+$date=date_format($date, 'Y-m-d H:i:s');
+
 //geo
 $geo=$_POST['geo'];
 
@@ -25,8 +31,9 @@ $responsable=$_POST['responsable'];
 
 
 
+
 //doc user
-$sql="SELECT id_doc,estado_doc FROM documentos_upb WHERE titulo_doc='{$titulo}' and fecha_e='{$fecha_e}';";
+$sql="SELECT id_doc,estado_doc FROM documentos_upb WHERE titulo_doc='{$titulo}' and fecha_e='{$date}';";
 $respuesta=query($sql);
   foreach ($respuesta as $fila) {
     // code...
@@ -60,7 +67,8 @@ ob_start();
       	<form style="margin-left: 50px;">
          
         Concepto: <input type="text" <?php echo"value=\"$titulo\"";?> readonly name="titulo" style=" margin-top: 10px; margin-left: 74px;"><br> <br>
-        Fecha de Envio: <?php  echo "<input type=\"text\" value=\"$fecha\" readonly name=\"fecha\" readonly style=\"margin-top: 8px; margin-left:38px\" value=\"$fecha\"> <br>"; ?><br>
+        Fecha de Envio: <?php 
+        echo "<input type=\"text\" value=\"$fecha\" readonly name=\"fecha\" readonly style=\"margin-top: 8px; margin-left:38px\"> <br>"; ?><br>
         Hora de Envio: <?php   echo "<input type=\"text\" value=\"$reloj\" name=\"reloj\" size=\"10\" readonly style=\"margin-top: 8px; margin-left:40px\"> <br>";?> <br>
         Responsable: <?php  echo " <input type=\"text\" name=\"emisor\" readonly style=\" margin-top: 8px;margin-left:54px\" value=\"$emisor\"> <br>";
 ?><br>
@@ -122,6 +130,6 @@ $dompdf->render();
 // Output the generated PDF to Browser
 $dompdf->stream("$Nombres$Apellido_p".'_'."$id", array("Attachment"  => false));
 // PARA EN VIAR EL CORREO :D
-include_once("mailconc.php");
+//include_once("mailconc.php");
 ?>
 

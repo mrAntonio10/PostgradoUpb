@@ -21,14 +21,10 @@ function countRow($query){
  return $row;
 }
 
-function Tiempo(){
+function Tiempo($fecha){
   date_default_timezone_set('America/La_Paz');
-$now = new DateTime();
-$f_creacion = new DateTime('2022-04-30');
-
-$interval = $f_creacion->diff($now);
-echo "Han pasado: ";
-echo $interval->days . ' días desde que subimos la primera versión' . PHP_EOL;
+  $fecha=date_format($fecha,"d/m/Y");
+  return $fecha;
 }
 
 ?>

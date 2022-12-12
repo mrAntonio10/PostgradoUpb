@@ -1,6 +1,12 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
+<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <?php
 include_once("include/conf.phpinc");
 include("include/func.phpinc");
@@ -10,67 +16,54 @@ $default_style = "style_form";
 //Cookies 
 $USER = $_POST['USER'];
 $PASS = $_POST['PASS'];
-$fijo = $_POST['fijo'];
+$fijo = $_POST['campus'];
 setcookie("USER", $USER);
 setcookie("PASS", $PASS);
 ?>
-<body style="background-color:#030428;">
+<body class="d-flex justify-content-center align-items-center vh-100"  style="background-color:#030428;">
 
 <?php
-
 //Condicional IF-ELSE para LOG IN 
-if ($fijo != 1) {
-
+if (empty($fijo)) {
   echo "<form action=\"#\" method=\"post\">";
+ 
+  echo "<div class=\"bg-white p-5 rounded-5 text-secondary shadow\" style= \"width: 25rem\"; >" ;
 
-  echo "<div class=\"container text-center\" style= \"margin-top:170px\"; >" ;
-  echo "<div class=\"col-md-4 offset-md-4\">";
+  echo "<div class=\"d-flex justify-content-center\";>";
+  echo "<img src=\"https://upload.wikimedia.org/wikipedia/commons/1/1f/Logo_UPB.jpg\" alt=\"login-icon\" style= \"height: 7rem\"; >";
+  echo "</div>";
 
-  echo "<div class=\"card\" style=\"max-width: 50rem;\">";
-
-  echo "<div class=\"card-header\" style=\"font-size: 30px; font-weight: bold;\">";
-  echo "<img src=\"https://upload.wikimedia.org/wikipedia/commons/1/1f/Logo_UPB.jpg\" alt=\"Logo\" width=\"35\" height=\"35\" class=\"d-inline-block align-text-rigth\">";
+  echo "<div class=\"text-center fs-1 fw-bold\";>";
   echo "upbdocs";
-
   echo "</div>";
 
-  echo "<div class=\"card-body\">";
-  echo "<div class=\"row my-2\">";
-  echo "<input placeholder=\"Email institucional\"  name=\"USER\" required style=\"text-align:\">"; 
+  echo "<div class=\"input-group mt-4\";>";
+  echo "<input  class=\"form-control bg-light\" placeholder=\"Email institucional\"  name=\"USER\" required style=\"text-align:\" type=\"email\">"; 
   echo "</div>";
 
-  echo "<div class=\"row my-2\">";
-
-  echo "<input type=\"password\" placeholder=\"Contraseña\"  name=\"PASS\" required style=\"text-align:\" >";
-
+  echo "<div class=\"input-group mt-1\";>";
+  echo "<input class=\"form-control bg-light\" type=\"password\" placeholder=\"Contraseña\"  name=\"PASS\" required style=\"text-align:\" >";
   echo "</div>";
-  echo "</div>";
+  echo "<center>";
+  echo "User<br> <input type=\"radio\" name=\"campus\" required style=\"text-align:\" value=\"1\">"; echo "<br>"; 
+  echo "Admin<br> <input type=\"radio\" name=\"campus\" required style=\"text-align:\" value=\"2\">"; echo "<br>"; 
+  echo "</center>";
 
-
-  echo "<div class=\"card-footer bg-transparent\">";
-  echo "<div class=\"row my-2\">";
-  echo "<input type=\"hidden\" name=\"fijo\" value=\"1\">";
-  echo "<input type=\"submit\"  class=\"btn \" name=\"accion\" value=\"Log in\" style=\"background-color: #E8B82B\"> ";
-  echo "</div>";
+  echo "<div class=\"btn btn-warning w-100 mt-4 fw-bold shadow\";>";
+  echo "<input type=\"submit\"  class=\"btn d-grid gap-2 col-12 mx-auto\" name=\"accion\" value=\"Log in\" > ";
   echo "</div>";
 
-
-
-  echo "</div>";
-
-
-  echo "</div>";
-  echo "</div>";
-
-
-
+  echo "</div>";  
 
   echo "</form>";
 
-} else {
-  echo " <META HTTP-EQUIV=\"REFRESH\" CONTENT=\"2;URL=IndexPdf.php\">";
+} else if($fijo==1){
+  echo "<META HTTP-EQUIV=\"REFRESH\" CONTENT=\"2;URL=IndexPdf.php\">";
+}
+
+else if($fijo==2){
+  echo "<META HTTP-EQUIV=\"REFRESH\" CONTENT=\"1;URL=Register.php\">"; 
 }
 
 ?>
 </body>
-

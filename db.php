@@ -6,14 +6,29 @@ include("include/dbopen.php");
 //PAGINA
 include("include/header.php");
 
-
+function SubirArchivo ($sfArchivo){
+        $dir_subida = 'subidas/';
+        $fichero_subido = $dir_subida . basename($_FILES[$sfArchivo]['name']);
+        if (move_uploaded_file($_FILES[$sfArchivo]['tmp_name'], $fichero_subido)) {
+            return $fichero_subido;
+        } else {
+            return "";
+        }
+    }
 
 //DOC
 $titulo=$_POST['titulo'];
 $fecha=$_POST['fecha'];
 $reloj=$_POST['reloj'];
 $descripcion=$_POST['desc'];
+
 $fecha_e="$fecha $reloj";
+//para almacenar en la base de datos
+$date = date_create($fecha_e);
+$date=date_format($date, 'Y-m-d H:i:s');
+
+
+ $sImagen = SubirArchivo('txtImagen');  
 //geoubicacion
 $geo=$_POST['geo'];
 
@@ -30,11 +45,11 @@ foreach ($respuesta as $fila) {
 }
 
 
-$sql="INSERT INTO documentos_upb(titulo_doc,fecha_e,descripcion_doc,estado_doc) VALUES ('{$titulo}','{$fecha_e}','{$descripcion}','EN RUTA');";
+$sql="INSERT INTO documentos_upb(titulo_doc,fecha_e,descripcion_doc,estado_doc) VALUES ('{$titulo}','{$date}','{$descripcion}','EN RUTA');";
 query($sql);
 
 //doc user
-$sql="SELECT id_doc FROM documentos_upb WHERE titulo_doc='{$titulo}' and fecha_e='{$fecha_e}';";
+$sql="SELECT id_doc FROM documentos_upb WHERE titulo_doc='{$titulo}' and fecha_e='{$date}';";
 $respuesta=query($sql);
   foreach ($respuesta as $fila) {
     // code...
@@ -133,7 +148,7 @@ $respuesta=query($sql);
 
 
         <div style='text-align: center;'>
-  <!-- insert your custom barcode setting your data in the GET parameter "data" -->
+ 
 
   <?php
   /*Método que envia datos en la URL del qr

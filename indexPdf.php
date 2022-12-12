@@ -39,6 +39,7 @@ if (empty($usuario) && empty($contrasena)) {
     $desc = $_POST['desc'];
     $ido = $_POST['id_o'];
     $point = $_POST['point'];
+    
     //TOMAR EN CUENTA QUE LOS DATOS USER PASS ESTÁN EN COOKIES
     //Cookies obtenidas gracias al include/conf.phpinc
     //$user & $pass
