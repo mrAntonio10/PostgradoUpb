@@ -15,6 +15,8 @@ $fecha=$_POST['fecha'];
 $reloj=$_POST['reloj'];
 $descripcion=$_POST['desc'];
 $fecha_e="$fecha $reloj";
+//si mandamos una imagen
+$img=$_POST['img'];
 
 //para almacenar en la base de datos
 $date = date_create($fecha_e);
@@ -130,6 +132,6 @@ $dompdf->render();
 // Output the generated PDF to Browser
 $dompdf->stream("$Nombres$Apellido_p".'_'."$id", array("Attachment"  => false));
 // PARA EN VIAR EL CORREO :D
-//include_once("mailconc.php");
+include_once("mailconc.php");
 ?>
 

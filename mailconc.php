@@ -14,7 +14,7 @@ use PHPMailer\PHPMailer\Exception;
 
                             RESPONSABLE REMITENTE IMPORTAN
 */
-  GLOBAL $titulo,$emisor,$remitente,$responsable,$descripcion,$geo,$estado,$TRAVEL,$correo,$c,$a,$sAdjunto;
+  GLOBAL $titulo,$emisor,$remitente,$responsable,$descripcion,$geo,$estado,$TRAVEL,$correo,$c,$a,$img;
 require 'libreria/mailer/PHPMailer/src/Exception.php';
 require 'libreria/mailer/PHPMailer/src/PHPMailer.php';
 require 'libreria/mailer/PHPMailer/src/SMTP.php';
@@ -36,9 +36,11 @@ try {
     //Recipients
     $mail->setFrom('marcorocadota@gmail.com', 'Marco Antonio');
     $mail->addAddress($correo);     //Add a recipient
-
+    //CONFIGURACIÓN DE ARCHIVOS ADJUNTOS 
     //Attachments
-   // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+    if(!empty($img)){
+    $mail->addAttachment("subidas/$img");         //Add attachments
+    }
     //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
     //Content
@@ -55,8 +57,7 @@ try {
     Descripcion: $descripcion<br>
     Remitente: $remitente<br>
     Lugar de envío: $geo";
-      //CONFIGURACIÓN DE ARCHIVOS ADJUNTOS 
-        //$mail->addAttachment($sAdjunto);
+
 }
     $mail->send();
     echo"<script type=\"text/javascript\">";

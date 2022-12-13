@@ -50,7 +50,7 @@ else{
      //fin del mensaje
      if($estado!='EN RUTA'){
           ECHO "<center> <h2>QR utilizado,redirigientode al men&uacute; principal</h2> </center>";
-          echo "<META HTTP-EQUIV=\"REFRESH\" CONTENT=\"2;URL=IndexPdf.php\">";
+          echo "<META HTTP-EQUIV=\"REFRESH\" CONTENT=\"5;URL=IndexPdf.php\">";
      }
      else{
      if($c==0){

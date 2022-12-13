@@ -6,15 +6,7 @@ include("include/dbopen.php");
 //PAGINA
 include("include/header.php");
 
-function SubirArchivo ($sfArchivo){
-        $dir_subida = 'subidas/';
-        $fichero_subido = $dir_subida . basename($_FILES[$sfArchivo]['name']);
-        if (move_uploaded_file($_FILES[$sfArchivo]['tmp_name'], $fichero_subido)) {
-            return $fichero_subido;
-        } else {
-            return "";
-        }
-    }
+
 
 //DOC
 $titulo=$_POST['titulo'];
@@ -27,15 +19,32 @@ $fecha_e="$fecha $reloj";
 $date = date_create($fecha_e);
 $date=date_format($date, 'Y-m-d H:i:s');
 
-
- $sImagen = SubirArchivo('txtImagen');  
-//geoubicacion
+//geoubicacion  
 $geo=$_POST['geo'];
 
 //USUARIOS
 $emisor=$_POST['emisor'];
 (double)$remitente=$_POST['remitente'];
 (double)$responsable=$_POST['responsable'];
+
+//PARA CARGAR LA IMAGEN ENVIADA :D
+  if(count($_FILES)>0){
+  $fic_nombre=$_FILES['fichero']['name'];
+  $fic_tipo=$_FILES['fichero']['type'];
+  $fic_tam=$_FILES['fichero']['size'];
+  $fic_ubicacion=$_FILES['fichero']['tmp_name'];
+  //La ubicacion temporal despues se elimina
+
+  
+   $destino= "subidas\\$fic_nombre";
+    if(move_uploaded_file($fic_ubicacion,$destino)){
+      echo ".";
+    }
+    else{
+      echo "Hubo un error inesperado a la hora de cargar tu archivo <br>";
+    }
+}
+
 
 $sql="SELECT id_user FROM user_upb WHERE Nombre_completo='$emisor';";
 $respuesta=query($sql);
@@ -106,6 +115,7 @@ $respuesta=query($sql);
           echo" <input type=\"text\" value=\"$titulo\" readonly name=\"titulo\" style=\" margin-top: 10px;\"> <br>";
           echo "<input type=\"text\" value=\"$fecha\" readonly name=\"fecha\" readonly style=\"margin-top: 8px;\" value=\"$fecha\"> <br>";
           echo "<input type=\"text\" value=\"$reloj\" name=\"reloj\" size=\"10\" readonly style=\"margin-top: 8px;\"> <br>";
+          echo "<input type=\"hidden\" value=\"$fic_nombre\" name=\"img\"> <br>";
 
              //SQL DE RESPONSABLE 
           $sql=" SELECT Nombre_completo from user_upb where id_user=$emisor2;";

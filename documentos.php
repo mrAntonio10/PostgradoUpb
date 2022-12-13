@@ -51,9 +51,9 @@ echo "<head><title>.:Postgrado SCZ:.</title>";
   date_default_timezone_set('America/La_Paz');
   $fecha = date('d-m-Y', time());
   ?>
-
+  
   <!-- BLOQUE2 -->
-  <form action="db.php" method="post" name="form_reloj">
+  <form action="db.php" method="post" name="form_reloj" enctype="multipart/form-data">
     Concepto
     <input type="text" name="titulo" style=" margin-top: 10px;"> <br>
 
@@ -106,8 +106,7 @@ echo "<head><title>.:Postgrado SCZ:.</title>";
     ?>
 
     Documento
-    <input type="file" name="txtImagen" accept="image/x-png,image/gif,image/jpeg" style=" margin-top: 8px;">
-    <br>
+   <input type="file" name="fichero" accept=".jpeg,.jpg,.png"><br>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
       <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
