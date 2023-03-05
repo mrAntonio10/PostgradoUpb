@@ -111,7 +111,7 @@ $respuesta=query($sql);
         <form action="ppdedompfd.php" method="post" name="form_reloj">
           
           <?php
-          echo "<h2>Documento: $id_doc</h2>";
+          echo "<h2>Documento</h2>";  
           echo" <input type=\"text\" value=\"$titulo\" readonly name=\"titulo\" style=\" margin-top: 10px;\"> <br>";
           echo "<input type=\"text\" value=\"$fecha\" readonly name=\"fecha\" readonly style=\"margin-top: 8px;\" value=\"$fecha\"> <br>";
           echo "<input type=\"text\" value=\"$reloj\" name=\"reloj\" size=\"10\" readonly style=\"margin-top: 8px;\"> <br>";
@@ -174,14 +174,7 @@ $respuesta=query($sql);
     <!-- Fin BLOQUE 2 -->
     </div>
 
-
-
-
-  		<center>
-        <h2>
-          Datos enviados con éxito
-        </h2>
-      </center>
+      
        
 
 

@@ -106,7 +106,7 @@ echo "<head><title>.:Postgrado SCZ:.</title>";
     ?>
 
     Documento
-   <input type="file" name="fichero" accept=".jpeg,.jpg,.png"><br>
+   <input type="file" name="fichero"><br>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
       <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
